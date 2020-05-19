@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import { Container } from "../components/layoutComponents"
 import SEO from "../components/seo"
+import CtaButton from "../components/button"
 
 const IndexPage = () => (
   <Layout>
@@ -17,6 +18,7 @@ const IndexPage = () => (
         <Image />
       </div>
       <Link to="/page-2/">Go to page 2</Link>
+     <CtaButton>teste</CtaButton>
     </Container>
   </Layout>
 )
