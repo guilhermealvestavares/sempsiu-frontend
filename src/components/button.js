@@ -8,7 +8,7 @@ const CtaButton = styled.a`
     border-radius: 4px;
     padding-left: 16px;
     padding-right: 16px;
-    height: 36px;
+    height: 48px;
     display: flex;
     color: ${props => props.color ? props.color : "#ffffff"};
     background-color: ${props => props.bgColor ? props.bgColor : "var(--primary-color)"};
