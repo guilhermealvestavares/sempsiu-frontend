@@ -1,16 +1,16 @@
 import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Karla|Lato');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins');
   :root {
-    --primary-color: rebeccapurple;
+    --primary-color: #118AB2;
     --white: #FFFAFF;
   }
   * {
     box-sizing: border-box;
   }
   html {
-    font-family: lato;
+    font-family: Poppins;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     touch-action: manipulation;
@@ -22,7 +22,7 @@ export const GlobalStyle = createGlobalStyle`
   main {
     flex: 1 0 auto;
     h1,h2,h3,h4,h5,h6 {
-    font-family: Karla;
+    font-family: Poppins;
     color: #0c2340;
     }
     a {
