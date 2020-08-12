@@ -1,40 +1,51 @@
-import React from "react"
-import Layout from "../components/layout"
-import { Container } from "../components/layoutComponents"
-import { CtaButton, InlineButton, CtaTextItem } from "../components/button"
-import ContainerButton from "../components/containers"
+import React from "react";
+import Layout from "../components/layout";
+import { Container } from "../components/layoutComponents";
+import {
+  CtaButton,
+  InlineButton,
+  CtaTextItem,
+} from "../components/Button/Button.style";
+import ContainerButton from "../components/Container/Container.style";
 
 const Components = () => (
   <Layout>
     <Container>
       <CtaButton href="/">
         <ContainerButton>
-         <span>Busque a sua linha de ônibus</span> 
-         <span>></span> 
+          <span>Busque a sua linha de ônibus</span>
+          <span>></span>
         </ContainerButton>
       </CtaButton>
-      <br/>
-      <CtaButton href="/" color="#118AB2" borderColor="#118AB2" bgColor="#ffffff">
+      <br />
+      <CtaButton
+        href="/"
+        color="#118AB2"
+        borderColor="#118AB2"
+        bgColor="#ffffff"
+      >
         <ContainerButton>
-         <CtaTextItem>Busque a sua linha de ônibus </CtaTextItem> 
-         <CtaTextItem>></CtaTextItem> 
+          <CtaTextItem>Busque a sua linha de ônibus </CtaTextItem>
+          <CtaTextItem>></CtaTextItem>
         </ContainerButton>
       </CtaButton>
-      <br/>
+      <br />
       <CtaButton href="/" bgColor="#06D6A0">
         <ContainerButton jContent="center">
-         <CtaTextItem>Busque a sua linha de ônibus </CtaTextItem>  
+          <CtaTextItem>Busque a sua linha de ônibus </CtaTextItem>
         </ContainerButton>
       </CtaButton>
-      <br/>
+      <br />
       <InlineButton href="/">
         <ContainerButton jContent="flex-start">
-         <CtaTextItem margin="0 16px 0 0">Busque a sua linha de ônibus </CtaTextItem>
-         <CtaTextItem>></CtaTextItem>  
+          <CtaTextItem margin="0 16px 0 0">
+            Busque a sua linha de ônibus{" "}
+          </CtaTextItem>
+          <CtaTextItem>></CtaTextItem>
         </ContainerButton>
       </InlineButton>
     </Container>
   </Layout>
-)
+);
 
-export default Components
+export default Components;
