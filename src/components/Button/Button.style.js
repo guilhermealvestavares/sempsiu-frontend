@@ -15,6 +15,7 @@ const CtaButton = styled.a`
     props.bgColor ? props.bgColor : "var(--primary-color)"};
   border: 1px solid
     ${(props) => (props.borderColor ? props.borderColor : "transparent")};
+  margin: ${(props) => (props.margin ? props.margin : "0")};
 `;
 
 const InlineButton = styled.a`
