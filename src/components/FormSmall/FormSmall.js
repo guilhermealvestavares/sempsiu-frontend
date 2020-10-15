@@ -1,4 +1,4 @@
-import React from "React";
+import React from "react";
 import { FlexContent } from "../FlexContent.style.js";
 import { Button } from "../Button";
 import {
