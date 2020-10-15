@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const CtaButton = styled.a`
-  font-family: Poppins;
+  font-family: "Lato", sans-serif;
   font-weight: 600;
   text-transform: uppercase;
   width: 100%;
@@ -19,7 +19,7 @@ const CtaButton = styled.a`
 `;
 
 const InlineButton = styled.a`
-  font-family: Poppins;
+  font-family: "Lato", sans-serif;
   font-weight: 600;
   text-transform: uppercase;
   width: 100%;
