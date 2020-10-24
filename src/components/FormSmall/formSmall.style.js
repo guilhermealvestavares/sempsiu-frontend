@@ -21,8 +21,14 @@ const LabelFieldsWithSomesRadios = styled.label`
 const WrapperForm = styled.div`
   background-color: #ffffff;
   padding: 28px;
-  width: 50%;
+  width: 100%;
   border-top: 2px solid #f8f8f8;
+  height: auto;
+
+  @media (min-width: 1024px) {
+    width: 50%;
+    height: 90vh;
+  }
 `;
 
 export { LabelRadio, LabelFields, LabelFieldsWithSomesRadios, WrapperForm };
