@@ -17,7 +17,7 @@ const CtaMenu = styled.a`
   color: #000000;
   font-family: "Lato", sans-serif;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 16px;
 `;
 
 export { WrapperMenu, Wrapper, CtaMenu };

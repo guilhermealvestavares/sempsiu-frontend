@@ -24,10 +24,12 @@ const WrapperForm = styled.div`
   width: 100%;
   border-top: 2px solid #f8f8f8;
   height: auto;
+  margin: 0 auto;
 
   @media (min-width: 1024px) {
     width: 50%;
-    height: 90vh;
+    height: 95vh;
+    margin: 0 auto;
   }
 `;
 
