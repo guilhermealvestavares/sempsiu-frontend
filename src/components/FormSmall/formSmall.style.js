@@ -20,12 +20,18 @@ const LabelFieldsWithSomesRadios = styled.label`
 
 const Button = styled.button`
   width: 100%;
-  border-radius: 4px;
+  border-radius: 2px;
   color: white;
   font-family: "Lato", sans-serif;
-  background-color: #06D6A0;
+  background-color: #06d6a0;
   border: 0;
   margin-top: 32px;
+  padding: 24px;
+`;
+
+const Select = styled.select`
+  width: 100%;
+  padding: 8px 0;
 `;
 
 const WrapperForm = styled.div`
@@ -37,10 +43,15 @@ const WrapperForm = styled.div`
   margin: 0 auto;
 
   @media (min-width: 1024px) {
-    width: 50%;
-    height: 100vh;
     margin: 0 auto;
   }
 `;
 
-export { LabelRadio, LabelFields, LabelFieldsWithSomesRadios, Button, WrapperForm };
+export {
+  LabelRadio,
+  LabelFields,
+  LabelFieldsWithSomesRadios,
+  Button,
+  Select,
+  WrapperForm,
+};

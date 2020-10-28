@@ -1,10 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { FlexContent } from "../FlexContent.style.js";
 import {
   LabelRadio,
   LabelFields,
   LabelFieldsWithSomesRadios,
   Button,
+  Select,
   WrapperForm,
 } from "./formSmall.style.js";
 import axios from "axios";
@@ -14,11 +15,42 @@ const ENDPOINT_DENUNCIATION = DOMAIN_ENDPOINT + "denuncia";
 const ENDPOINT_LINES = DOMAIN_ENDPOINT + "linha";
 const GET_DATA_AND_SEPARATE_IN_GROUPS = /(.*?)\[(.*?)\]/;
 
+const TRAIN_LINES = [
+  { line: "7 - Rubi" },
+  { line: "8 - Diamante" },
+  { line: "9 - Esmeralda" },
+  { line: "10 - Turquesa" },
+  { line: "11 - Coral" },
+  { line: "12 - Safira" },
+  { line: "13 - Jade" },
+  { line: "Expresso Aeroporto" },
+  { line: "Connect Aeroporto" },
+];
+
+const METRO_LINES = [
+  { line: "1 - Azul" },
+  { line: "2 - Verde" },
+  { line: "3 - Vermelha" },
+  { line: "4 - Amarela" },
+  { line: "5 - Lilás" },
+  { line: "15 - Prata" },
+];
+
 const FormSmall = () => {
   const formRef = useRef(null);
 
-  const [select, setSelect] = useState(false);
-  const [dataSelect, setDataSelect] = useState("");
+  const [selectBus, setSelectBus] = useState(false);
+  const [dataSelectBus, setDataSelectBus] = useState("");
+  const [selectTrain, setSelectTrain] = useState(true);
+  const [dataSelectTrain, setDataSelectTrain] = useState(TRAIN_LINES);
+  const [selectMetro, setSelectMetro] = useState(false);
+  const [dataSelectMetro, setDataSelectMetro] = useState(METRO_LINES);
+
+  useEffect(() => {
+    getLinesTrain();
+    axiosGetLinesBus();
+    getLinesMetro();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,16 +92,36 @@ const FormSmall = () => {
     return objectData;
   };
 
-  const handleCheckTransport = () => {
-    axiosGetLines();
-    setSelect(true);
+  const axiosGetLinesBus = () => {
+    axios.get(ENDPOINT_LINES).then(function(response) {
+      setDataSelectBus(response.data.data);
+    });
   };
 
-  const axiosGetLines = () => {
-    axios.get(ENDPOINT_LINES, {}).then(function(response) {
-      setDataSelect(response.data.data);
-      console.log(dataSelect);
-    });
+  const getLinesTrain = () => {
+    setDataSelectTrain(TRAIN_LINES);
+  };
+
+  const getLinesMetro = () => {
+    setDataSelectMetro(METRO_LINES);
+  };
+
+  const handleCheck = (transport) => {
+    if (transport == "bus") {
+      setSelectBus(true);
+      setSelectTrain(false);
+      setSelectMetro(false);
+    }
+    if (transport == "train") {
+      setSelectBus(false);
+      setSelectTrain(true);
+      setSelectMetro(false);
+    }
+    if (transport == "metro") {
+      setSelectBus(false);
+      setSelectTrain(false);
+      setSelectMetro(true);
+    }
   };
 
   return (
@@ -86,31 +138,62 @@ const FormSmall = () => {
 
           <LabelFields>1. Selecione o transporte:</LabelFields>
           <div>
-            <input
-              checked
-              type="radio"
-              value="Ônibus"
-              name="typeTransport"
-              onClick={handleCheckTransport}
-            />
-            <LabelRadio>Ônibus</LabelRadio>
-            <input type="radio" value="Trem" name="typeTransport" />
-            <LabelRadio>Trem</LabelRadio>
-            <input type="radio" value="Metrô" name="typeTransport" />
-            <LabelRadio>Metrô</LabelRadio>
+            <LabelRadio>
+              <input
+                type="radio"
+                value="Trem"
+                name="typeTransport"
+                onClick={() => handleCheck("train")}
+              />
+              Trem
+            </LabelRadio>
+            <LabelRadio>
+              <input
+                type="radio"
+                value="Metrô"
+                name="typeTransport"
+                onClick={() => handleCheck("metro")}
+              />
+              Metrô
+            </LabelRadio>
+            <LabelRadio>
+              <input
+                type="radio"
+                value="Ônibus"
+                name="typeTransport"
+                onClick={() => handleCheck("bus")}
+              />
+              Ônibus
+            </LabelRadio>
           </div>
           <LabelFields>2. Selecione a linha:</LabelFields>
           <div>
-            <select name="id_lnha" id="id_lnha">
-              {select &&
-                dataSelect.map((item, index) => {
+            <Select name="id_lnha" id="id_lnha">
+              {selectTrain &&
+                dataSelectTrain.map(({ line }, index) => {
                   return (
-                    <option value={item._id} key={`option-${index}`}>
-                      {item.id}
+                    <option value={line} key={`option-train${index}`}>
+                      {line}
                     </option>
                   );
                 })}
-            </select>
+              {selectMetro &&
+                dataSelectMetro.map(({ line }, index) => {
+                  return (
+                    <option value={line} key={`option-metro${index}`}>
+                      {line}
+                    </option>
+                  );
+                })}
+              {selectBus &&
+                dataSelectBus.map(({ _id, id, name }, index) => {
+                  return (
+                    <option value={_id} key={`option-bus${index}`}>
+                      {`${id} | ${name}`}
+                    </option>
+                  );
+                })}
+            </Select>
           </div>
 
           <LabelFields>4. Selecione o tipo do delito:</LabelFields>

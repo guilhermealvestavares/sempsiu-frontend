@@ -6,13 +6,8 @@ const WrapperDataView = styled.div`
   width: 100%;
   height: 90vh;
   border-top: 2px solid #f8f8f8;
-  
-
 
   @media (min-width: 1024px) {
-    width: 50%;
-    margin-left: auto;
-    margin: 0 auto;
   }
 `;
 
