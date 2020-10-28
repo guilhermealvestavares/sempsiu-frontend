@@ -7,15 +7,25 @@ const LabelRadio = styled.label`
 
 const LabelFields = styled.label`
   display: block;
-  margin-top: 24px;
+  margin-top: 32px;
   font-weight: 700;
   font-family: "Lato", sans-serif;
 `;
 
 const LabelFieldsWithSomesRadios = styled.label`
   display: block;
-  margin: 6px 0 0 0;
+  margin: 8px 0 0 0;
   font-family: "Lato", sans-serif;
+`;
+
+const Button = styled.button`
+  width: 100%;
+  border-radius: 4px;
+  color: white;
+  font-family: "Lato", sans-serif;
+  background-color: #06D6A0;
+  border: 0;
+  margin-top: 32px;
 `;
 
 const WrapperForm = styled.div`
@@ -28,9 +38,9 @@ const WrapperForm = styled.div`
 
   @media (min-width: 1024px) {
     width: 50%;
-    height: 95vh;
+    height: 100vh;
     margin: 0 auto;
   }
 `;
 
-export { LabelRadio, LabelFields, LabelFieldsWithSomesRadios, WrapperForm };
+export { LabelRadio, LabelFields, LabelFieldsWithSomesRadios, Button, WrapperForm };
