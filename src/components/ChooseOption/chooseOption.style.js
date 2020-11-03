@@ -67,12 +67,14 @@ const Cards = styled.div`
   border-radius: 12px;
   height: 181px;
   width: 100%;
+  max-width: 130px;
   padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   @media (min-width: 1024px) {
+    max-width: 100%;
   }
 
   &:first-child {

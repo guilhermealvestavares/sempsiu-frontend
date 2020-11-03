@@ -11,12 +11,10 @@ const IndexPage = () => {
   return (
     <Layout>
       <Container>
-        {/* <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-        <h2 style={{ color: "#ffffff", margin: "48px 0 0 0", padding: "0" }}>
-          Relate um delito acontecido em algum transporte público de São Paulo
-          em instantes
-        </h2>
-         */}
+        <SEO
+          title="Home"
+          keywords={[`denúncia`, `assédio`, `Transporte Público`]}
+        />
         <ChooseOption />
       </Container>
     </Layout>

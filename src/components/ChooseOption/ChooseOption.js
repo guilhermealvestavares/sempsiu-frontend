@@ -12,19 +12,33 @@ import {
 import { graphql, useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
 import { Link } from "gatsby";
+import styled from "styled-components";
 
 const ChooseOption = () => {
   const chatIcon = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "icon-chat.png" }) {
         childImageSharp {
-          fluid(maxWidth: 1000) {
+          fluid {
             ...GatsbyImageSharpFluid
           }
         }
       }
     }
   `);
+
+  const LinkStyled = styled(Link)`
+    text-decoration: none;
+    color: #000000;
+    width: 100%;
+    &:first-child {
+      margin-right: 24px;
+    }
+  `;
+
+  const ImgStyled = styled(Img)`
+    width: 20px;
+  `;
 
   return (
     <Wrapper>
@@ -36,24 +50,18 @@ const ChooseOption = () => {
       <WrapperCards>
         <WrapperCardsTitle>DO que você precisa?</WrapperCardsTitle>
         <WrapperCardsFlex>
-          <Link to="/page-2/" style={{ width: "100%", marginRight: "24px" }}>
+          <LinkStyled to="/page-2/">
             <Cards>
-              <Img
-                style={{ width: "20px" }}
-                fluid={chatIcon.file.childImageSharp.fluid}
-              />
+              <ImgStyled fluid={chatIcon.file.childImageSharp.fluid} />
               <TextCards>Fazer uma denúncia</TextCards>
             </Cards>
-          </Link>
-          <Link to="/page-2/" style={{ width: "100%" }}>
+          </LinkStyled>
+          <LinkStyled to="/page-2/">
             <Cards>
-              <Img
-                style={{ width: "20px" }}
-                fluid={chatIcon.file.childImageSharp.fluid}
-              />
+              <ImgStyled fluid={chatIcon.file.childImageSharp.fluid} />
               <TextCards>Informações sobre as linhas</TextCards>
             </Cards>
-          </Link>
+          </LinkStyled>
         </WrapperCardsFlex>
       </WrapperCards>
     </Wrapper>
