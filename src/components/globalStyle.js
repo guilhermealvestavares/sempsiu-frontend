@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
   :root {
     --primary-color: #118AB2;
     --white: #FFFAFF;
@@ -11,12 +11,12 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   header {
-    background-color: #f8f8f8!important;
+    background-color: #2c98f0!important;
     color: #073B4C!important;
   }
 
   html {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     touch-action: manipulation;
@@ -28,7 +28,7 @@ export const GlobalStyle = createGlobalStyle`
   main {
     flex: 1 0 auto;
     h1,h2,h3,h4,h5,h6 {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: #0c2340;
     }
     a {
@@ -230,7 +230,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     color: hsla(0, 0%, 0%, 0.8);
-    background-color: #118AB2;
     font-family: georgia, serif;
     font-weight: normal;
     word-wrap: break-word;

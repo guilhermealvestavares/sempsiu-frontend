@@ -2,27 +2,27 @@ import styled from "styled-components";
 
 const LabelRadio = styled.label`
   margin: 0 8px;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
 `;
 
 const LabelFields = styled.label`
   display: block;
   margin-top: 32px;
   font-weight: 700;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
 `;
 
 const LabelFieldsWithSomesRadios = styled.label`
   display: block;
   margin: 8px 0 0 0;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
 `;
 
 const Button = styled.button`
   width: 100%;
   border-radius: 2px;
   color: white;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   background-color: #06d6a0;
   border: 0;
   margin-top: 32px;
