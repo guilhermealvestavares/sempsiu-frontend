@@ -7,6 +7,7 @@ import {
   Button,
   Select,
   WrapperForm,
+  Title,
 } from "./formSmall.style.js";
 import axios from "axios";
 
@@ -127,6 +128,7 @@ const FormSmall = () => {
   return (
     <>
       <WrapperForm>
+        <Title>Faça sua denúncia.</Title>
         <form onSubmit={handleSubmit} ref={formRef} method="POST">
           <LabelFields>3. O delito aconteceu:</LabelFields>
           <div>
