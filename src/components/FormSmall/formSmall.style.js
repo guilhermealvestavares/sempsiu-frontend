@@ -5,10 +5,26 @@ const Title = styled.h1`
   font-style: normal;
   font-weight: bold;
   font-size: 40px;
-  line-height: 70px;
+  line-height: 50px;
 
   @media (min-width: 1024px) {
     font-size: 56px;
+    line-height: 70px;
+  }
+`;
+
+const Description = styled.p`
+  font-family: "Open Sans", sans-serif;
+  color: #616161;
+
+  font-size: 18px;
+  line-height: 28px;
+  color: #616161;
+  font-weight: normal;
+  margin-bottom: 36px;
+
+  @media (min-width: 1024px) {
+    line-height: 30px;
   }
 `;
 
@@ -73,4 +89,5 @@ export {
   Select,
   WrapperForm,
   Title,
+  Description,
 };
