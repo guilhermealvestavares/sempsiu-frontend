@@ -1,16 +1,20 @@
 import React, { useRef, useState, useEffect } from "react";
-import { FlexContent } from "../FlexContent.style.js";
 import {
   LabelRadio,
   LabelFields,
   LabelFieldsWithSomesRadios,
-  Button,
-  Select,
   WrapperForm,
   Title,
   Description,
+  StyledRadio,
+  StyledFormControlLabel,
+  StyledSelect,
+  StyledTextareaAutosize,
+  StyledButton,
 } from "./formSmall.style.js";
 import axios from "axios";
+import { RadioGroup, MenuItem, Button } from "@material-ui/core";
+import styled from "styled-components";
 
 const DOMAIN_ENDPOINT = "https://sem-psiu.herokuapp.com/";
 const ENDPOINT_DENUNCIATION = DOMAIN_ENDPOINT + "denuncia";
@@ -133,141 +137,257 @@ const FormSmall = () => {
         <Description>Responda as perguntas abaixo</Description>
         <form onSubmit={handleSubmit} ref={formRef} method="POST">
           <LabelFields>3. O delito aconteceu:</LabelFields>
-          <div>
-            <input checked type="radio" value="Agora" name="tipo_dnca" />
-            <LabelRadio>Agora</LabelRadio>
-            <input type="radio" value="Já aconteceu" name="tipo_dnca" />
-            <LabelRadio>Já aconteceu</LabelRadio>
-          </div>
+          <RadioGroup name="tipo_dnca">
+            <StyledFormControlLabel
+              type="radio"
+              value="Agora"
+              label="Agora"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="tipo_dnca"
+            />
+            <StyledFormControlLabel
+              type="radio"
+              value="Já aconteceu"
+              label="Já aconteceu"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="tipo_dnca"
+            />
+          </RadioGroup>
 
           <LabelFields>1. Selecione o transporte:</LabelFields>
-          <div>
-            <LabelRadio>
-              <input
-                type="radio"
-                value="Trem"
-                name="typeTransport"
-                onClick={() => handleCheck("train")}
-              />
-              Trem
-            </LabelRadio>
-            <LabelRadio>
-              <input
-                type="radio"
-                value="Metrô"
-                name="typeTransport"
-                onClick={() => handleCheck("metro")}
-              />
-              Metrô
-            </LabelRadio>
-            <LabelRadio>
-              <input
-                type="radio"
-                value="Ônibus"
-                name="typeTransport"
-                onClick={() => handleCheck("bus")}
-              />
-              Ônibus
-            </LabelRadio>
-          </div>
+          <RadioGroup name="typeTransport">
+            <StyledFormControlLabel
+              type="radio"
+              value="Trem"
+              label="Trem"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="typeTransport"
+              onClick={() => handleCheck("train")}
+            />
+
+            <StyledFormControlLabel
+              type="radio"
+              value="Metrô"
+              label="Metrô"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="typeTransport"
+              onClick={() => handleCheck("metro")}
+            />
+            <StyledFormControlLabel
+              type="radio"
+              value="Ônibus"
+              label="Ônibus"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="typeTransport"
+              onClick={() => handleCheck("bus")}
+            />
+          </RadioGroup>
+
           <LabelFields>2. Selecione a linha:</LabelFields>
           <div>
-            <Select name="id_lnha" id="id_lnha">
+            <StyledSelect variant="outlined" name="id_lnha" id="id_lnha">
               {selectTrain &&
                 dataSelectTrain.map(({ line }, index) => {
                   return (
-                    <option value={line} key={`option-train${index}`}>
+                    <MenuItem value={line} key={`option-train${index}`}>
                       {line}
-                    </option>
+                    </MenuItem>
                   );
                 })}
               {selectMetro &&
                 dataSelectMetro.map(({ line }, index) => {
                   return (
-                    <option value={line} key={`option-metro${index}`}>
+                    <MenuItem value={line} key={`option-metro${index}`}>
                       {line}
-                    </option>
+                    </MenuItem>
                   );
                 })}
               {selectBus &&
                 dataSelectBus.map(({ _id, id, name }, index) => {
                   return (
-                    <option value={_id} key={`option-bus${index}`}>
+                    <MenuItem value={_id} key={`option-bus${index}`}>
                       {`${id} | ${name}`}
-                    </option>
+                    </MenuItem>
                   );
                 })}
-            </Select>
+            </StyledSelect>
           </div>
-
           <LabelFields>4. Selecione o tipo do delito:</LabelFields>
-          <div>
-            <input checked type="radio" value="Assédio" name="tipo_agrs" />
-            <LabelRadio>Assédio</LabelRadio>
-            <input type="radio" value="Racismo" name="tipo_agrs" />
-            <LabelRadio>Racismo</LabelRadio>
-            <input type="radio" value="Violência física" name="tipo_agrs" />
-            <LabelRadio>Violência física</LabelRadio>
-            <input type="radio" value="Violência verbal" name="tipo_agrs" />
-            <LabelRadio>Violência verbal</LabelRadio>
-          </div>
 
-          <LabelFields>Informações adicionais:</LabelFields>
-          <div>
-            <textarea name="ds_dnca" placeholder="opcional"></textarea>
-          </div>
+          <RadioGroup name="tipo_agrs">
+            <StyledFormControlLabel
+              type="radio"
+              value="Assédio"
+              label="Assédio"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="tipo_agrs"
+            />
+            <StyledFormControlLabel
+              type="radio"
+              value="Racismo"
+              label="Racismo"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="tipo_agrs"
+            />
+            <StyledFormControlLabel
+              type="radio"
+              value="Violência física"
+              label="Violência física"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="tipo_agrs"
+            />
+            <StyledFormControlLabel
+              type="radio"
+              value="Violência verbal"
+              label="Violência verbal"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="tipo_agrs"
+            />
+          </RadioGroup>
 
           <LabelFields>
             5. Selecione algumas informações sobre o agressor:
           </LabelFields>
-          <div>
-            <LabelFieldsWithSomesRadios>Sexo</LabelFieldsWithSomesRadios>
-            <input
-              checked
+          <LabelFields>Sexo</LabelFields>
+          <RadioGroup name="ds_agrr[sexo]">
+            <StyledFormControlLabel
               type="radio"
               value="Masculino"
+              label="Masculino"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
               name="ds_agrr[sexo]"
             />
-            <LabelRadio>Masculino</LabelRadio>
-            <input type="radio" value="Feminino" name="ds_agrr[sexo]" />
-            <LabelRadio>Feminino</LabelRadio>
+            <StyledFormControlLabel
+              type="radio"
+              value="Feminino"
+              label="Feminino"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="ds_agrr[sexo]"
+            />
+          </RadioGroup>
 
-            <LabelFieldsWithSomesRadios>
-              Faixa etária
-            </LabelFieldsWithSomesRadios>
-            <input
-              checked
+          <LabelFields>Faixa etária</LabelFields>
+          <RadioGroup name="ds_agrr[sexo]">
+            <StyledFormControlLabel
               type="radio"
               value="Menor de idade"
+              label="Menor de idade"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
               name="ds_agrr[faixa_etaria]"
             />
-            <LabelRadio>Menor de idade</LabelRadio>
-            <input type="radio" value="18-25" name="ds_agrr[faixa_etaria]" />
-            <LabelRadio>18-25</LabelRadio>
-            <input type="radio" value="26-40" name="ds_agrr[faixa_etaria]" />
-            <LabelRadio>26-40</LabelRadio>
-            <input type="radio" value="40-60" name="ds_agrr[faixa_etaria]" />
-            <LabelRadio>40-60</LabelRadio>
-            <input
+            <StyledFormControlLabel
+              type="radio"
+              value="18-25"
+              label="18-25"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="ds_agrr[faixa_etaria]"
+            />
+            <StyledFormControlLabel
+              type="radio"
+              value="26-40"
+              label="26-40"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="ds_agrr[faixa_etaria]"
+            />
+            <StyledFormControlLabel
+              type="radio"
+              value="40-60"
+              label="40-60"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="ds_agrr[faixa_etaria]"
+            />
+            <StyledFormControlLabel
               type="radio"
               value="Acima de 60"
+              label="Acima de 60"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
               name="ds_agrr[faixa_etaria]"
             />
-            <LabelRadio>Acima de 60</LabelRadio>
+          </RadioGroup>
 
-            <LabelFieldsWithSomesRadios>Etnia</LabelFieldsWithSomesRadios>
-            <input checked type="radio" value="Negro" name="ds_agrr[etnia]" />
-            <LabelRadio>Negro</LabelRadio>
-            <input type="radio" value="Branco" name="ds_agrr[etnia]" />
-            <LabelRadio>Branco</LabelRadio>
+          <LabelFields>Etnia</LabelFields>
+          <RadioGroup name="ds_agrr[etnia]">
+            <StyledFormControlLabel
+              type="radio"
+              value="Negro"
+              label="Negro"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="ds_agrr[etnia]"
+            />
+            <StyledFormControlLabel
+              type="radio"
+              value="Branco"
+              label="Branco"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="ds_agrr[etnia]"
+            />
+            <StyledFormControlLabel
+              type="radio"
+              value="Pardo"
+              label="Pardo"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="ds_agrr[etnia]"
+            />
+            <StyledFormControlLabel
+              type="radio"
+              value="Amarelo"
+              label="Pardo"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="ds_agrr[etnia]"
+            />
+          </RadioGroup>
+          <LabelFields>Cabelo</LabelFields>
+          <RadioGroup name="ds_agrr[cabelo]">
+            <StyledFormControlLabel
+              type="radio"
+              value="Curto"
+              label="Curto"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="ds_agrr[cabelo]"
+            />
+            <StyledFormControlLabel
+              type="radio"
+              value="Longo"
+              label="Longo"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="ds_agrr[cabelo]"
+            />
+          </RadioGroup>
 
-            <LabelFieldsWithSomesRadios>Cabelo</LabelFieldsWithSomesRadios>
-            <input checked type="radio" value="Curto" name="ds_agrr[cabelo]" />
-            <LabelRadio>Curto</LabelRadio>
-            <input type="radio" value="Longo" name="ds_agrr[cabelo]" />
-            <LabelRadio>Longo</LabelRadio>
+          <LabelFields>Informações adicionais:</LabelFields>
+          <div>
+            <StyledTextareaAutosize
+              name="ds_dnca"
+              placeholder="Digite aqui"
+              rows="5"
+            />
           </div>
-          <Button type="submit">Clique aqui para fazer uma denúncia</Button>
+
+          <StyledButton type="submit" variant="contained">
+            Enviar denúncia
+          </StyledButton>
         </form>
       </WrapperForm>
     </>

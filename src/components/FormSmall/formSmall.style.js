@@ -1,4 +1,49 @@
 import styled from "styled-components";
+import {
+  Radio,
+  FormControlLabel,
+  Select,
+  TextareaAutosize,
+  Button,
+} from "@material-ui/core";
+
+const StyledRadio = styled(Radio)``;
+
+const StyledFormControlLabel = styled(FormControlLabel)`
+  justify-content: space-between;
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 16px;
+  margin-left: 0 !important;
+`;
+
+const StyledSelect = styled(Select)`
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+`;
+
+const StyledTextareaAutosize = styled(TextareaAutosize)`
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+
+  &::placeholder {
+    padding: 8px 0 0 16px;
+    color: #757575;
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+  }
+`;
+
+const StyledButton = styled(Button)`
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  background-color: #1565c0 !important;
+  height: 56px;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: #ffffff !important;
+`;
 
 const Title = styled.h1`
   font-family: "Open Sans", sans-serif;
@@ -35,7 +80,7 @@ const LabelRadio = styled.label`
 
 const LabelFields = styled.label`
   display: block;
-  margin-top: 32px;
+  margin: 32px 0 16px 0;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 14px;
@@ -47,22 +92,6 @@ const LabelFieldsWithSomesRadios = styled.label`
   display: block;
   margin: 8px 0 0 0;
   font-family: "Open Sans", sans-serif;
-`;
-
-const Button = styled.button`
-  width: 100%;
-  border-radius: 2px;
-  color: white;
-  font-family: "Open Sans", sans-serif;
-  background-color: #06d6a0;
-  border: 0;
-  margin-top: 32px;
-  padding: 24px;
-`;
-
-const Select = styled.select`
-  width: 100%;
-  padding: 8px 0;
 `;
 
 const WrapperForm = styled.div`
@@ -85,9 +114,12 @@ export {
   LabelRadio,
   LabelFields,
   LabelFieldsWithSomesRadios,
-  Button,
-  Select,
+  StyledButton,
   WrapperForm,
   Title,
   Description,
+  StyledRadio,
+  StyledFormControlLabel,
+  StyledSelect,
+  StyledTextareaAutosize,
 };
