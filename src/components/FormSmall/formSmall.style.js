@@ -24,11 +24,11 @@ const StyledSelect = styled(Select)`
 const StyledTextareaAutosize = styled(TextareaAutosize)`
   width: 100%;
   font-family: "Open Sans", sans-serif;
+  padding: 8px 0 0 16px;
+  color: #757575;
 
   &::placeholder {
-    padding: 8px 0 0 16px;
     color: #757575;
-    font-size: 16px;
     font-family: "Open Sans", sans-serif;
   }
 `;
