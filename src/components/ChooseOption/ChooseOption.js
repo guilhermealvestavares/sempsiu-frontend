@@ -50,7 +50,7 @@ const ChooseOption = () => {
       <WrapperCards>
         <WrapperCardsTitle>DO que você precisa?</WrapperCardsTitle>
         <WrapperCardsFlex>
-          <LinkStyled to="/form/">
+          <LinkStyled to="/enviar-denuncia/">
             <Cards>
               <ImgStyled fluid={chatIcon.file.childImageSharp.fluid} />
               <TextCards>Fazer uma denúncia</TextCards>
