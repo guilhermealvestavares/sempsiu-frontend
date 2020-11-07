@@ -100,7 +100,8 @@ const FormSmall = () => {
 
   const axiosGetLinesBus = () => {
     axios.get(ENDPOINT_LINES).then(function(response) {
-      setDataSelectBus(response.data.data);
+      setDataSelectBus(response.data.data.onibus);
+      console.log(response.data.data.onibus);
     });
   };
 
@@ -137,11 +138,11 @@ const FormSmall = () => {
         <Description>Responda as perguntas abaixo</Description>
         <form onSubmit={handleSubmit} ref={formRef} method="POST">
           <LabelFields>3. O delito aconteceu:</LabelFields>
-          <RadioGroup name="tipo_dnca">
+          <RadioGroup required name="tipo_dnca">
             <StyledFormControlLabel
               type="radio"
-              value="Agora"
-              label="Agora"
+              value="No momento"
+              label="No momento"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
               name="tipo_dnca"
@@ -157,7 +158,7 @@ const FormSmall = () => {
           </RadioGroup>
 
           <LabelFields>1. Selecione o transporte:</LabelFields>
-          <RadioGroup name="typeTransport">
+          <RadioGroup required name="typeTransport">
             <StyledFormControlLabel
               type="radio"
               value="Trem"
@@ -190,7 +191,12 @@ const FormSmall = () => {
 
           <LabelFields>2. Selecione a linha:</LabelFields>
           <div>
-            <StyledSelect variant="outlined" name="id_lnha" id="id_lnha">
+            <StyledSelect
+              required
+              variant="outlined"
+              name="id_lnha"
+              id="id_lnha"
+            >
               {selectTrain &&
                 dataSelectTrain.map(({ line }, index) => {
                   return (
@@ -208,10 +214,10 @@ const FormSmall = () => {
                   );
                 })}
               {selectBus &&
-                dataSelectBus.map(({ _id, id, name }, index) => {
+                dataSelectBus.map(({ _id, nm_lnha, cd_lnha }, index) => {
                   return (
                     <MenuItem value={_id} key={`option-bus${index}`}>
-                      {`${id} | ${name}`}
+                      {`${cd_lnha} ${nm_lnha}`}
                     </MenuItem>
                   );
                 })}
@@ -350,7 +356,7 @@ const FormSmall = () => {
             <StyledFormControlLabel
               type="radio"
               value="Amarelo"
-              label="Pardo"
+              label="Amarelo"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
               name="ds_agrr[etnia]"

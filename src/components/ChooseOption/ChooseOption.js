@@ -56,7 +56,7 @@ const ChooseOption = () => {
               <TextCards>Fazer uma denúncia</TextCards>
             </Cards>
           </LinkStyled>
-          <LinkStyled to="/page-2/">
+          <LinkStyled to="/visualizar-dados/">
             <Cards>
               <ImgStyled fluid={chatIcon.file.childImageSharp.fluid} />
               <TextCards>Informações sobre as linhas</TextCards>

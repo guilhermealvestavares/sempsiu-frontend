@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const WrapperDataView = styled.div`
+const WrapperWhatToDo = styled.div`
   width: 100%;
   background: #ffffff;
   box-shadow: 0px 17px 15px rgba(0, 0, 0, 0.08);
@@ -62,66 +62,4 @@ const BlockText = styled.div`
   }
 `;
 
-const BlockCard = styled.div`
-  width: 100%;
-  @media (min-width: 1024px) {
-    width: 354px;
-  }
-`;
-
-const Card = styled.div`
-  background: #f9f9f9;
-  border: 1px solid #ff9a03;
-  box-sizing: border-box;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  padding: 24px;
-  margin-bottom: 24px;
-
-  @media (min-width: 1024px) {
-    width: 336px;
-  }
-`;
-
-const ContentCard = styled.div`
-  margin-bottom: 16px;
-  @media (min-width: 1024px) {
-  }
-`;
-
-const TitleCard = styled.div`
-  font-family: "Open Sans", sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 21px;
-
-  @media (min-width: 1024px) {
-  }
-`;
-
-const DescriptionCard = styled.div`
-  font-family: "Open Sans", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 24px;
-  color: #757575;
-
-  @media (min-width: 1024px) {
-  }
-`;
-
-export {
-  WrapperDataView,
-  WrapperFlex,
-  Title,
-  Description,
-  BlockText,
-  BlockCard,
-  Card,
-  ContentCard,
-  TitleCard,
-  DescriptionCard,
-};
+export { WrapperWhatToDo, WrapperFlex, Title, Description, BlockText };
