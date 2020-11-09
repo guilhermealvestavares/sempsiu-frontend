@@ -21,41 +21,18 @@ const ENDPOINT_DENUNCIATION = DOMAIN_ENDPOINT + "denuncia";
 const ENDPOINT_LINES = DOMAIN_ENDPOINT + "linha";
 const GET_DATA_AND_SEPARATE_IN_GROUPS = /(.*?)\[(.*?)\]/;
 
-const TRAIN_LINES = [
-  { line: "7 - Rubi" },
-  { line: "8 - Diamante" },
-  { line: "9 - Esmeralda" },
-  { line: "10 - Turquesa" },
-  { line: "11 - Coral" },
-  { line: "12 - Safira" },
-  { line: "13 - Jade" },
-  { line: "Expresso Aeroporto" },
-  { line: "Connect Aeroporto" },
-];
-
-const METRO_LINES = [
-  { line: "1 - Azul" },
-  { line: "2 - Verde" },
-  { line: "3 - Vermelha" },
-  { line: "4 - Amarela" },
-  { line: "5 - Lilás" },
-  { line: "15 - Prata" },
-];
-
 const FormSmall = () => {
   const formRef = useRef(null);
 
   const [selectBus, setSelectBus] = useState(false);
-  const [dataSelectBus, setDataSelectBus] = useState("");
-  const [selectTrain, setSelectTrain] = useState(true);
-  const [dataSelectTrain, setDataSelectTrain] = useState(TRAIN_LINES);
+  const [dataSelectBus, setDataSelectBus] = useState({});
+  const [selectTrain, setSelectTrain] = useState(false);
+  const [dataSelectTrain, setDataSelectTrain] = useState({});
   const [selectMetro, setSelectMetro] = useState(false);
-  const [dataSelectMetro, setDataSelectMetro] = useState(METRO_LINES);
+  const [dataSelectMetro, setDataSelectMetro] = useState({});
 
   useEffect(() => {
-    getLinesTrain();
-    axiosGetLinesBus();
-    getLinesMetro();
+    axiosGetLines();
   }, []);
 
   const handleSubmit = (e) => {
@@ -98,19 +75,15 @@ const FormSmall = () => {
     return objectData;
   };
 
-  const axiosGetLinesBus = () => {
+  const axiosGetLines = () => {
     axios.get(ENDPOINT_LINES).then(function(response) {
       setDataSelectBus(response.data.data.onibus);
       console.log(response.data.data.onibus);
+      setDataSelectMetro(response.data.data.metro);
+      console.log(response.data.data.metro);
+      setDataSelectTrain(response.data.data.trem);
+      console.log(response.data.data.trem);
     });
-  };
-
-  const getLinesTrain = () => {
-    setDataSelectTrain(TRAIN_LINES);
-  };
-
-  const getLinesMetro = () => {
-    setDataSelectMetro(METRO_LINES);
   };
 
   const handleCheck = (transport) => {
@@ -136,8 +109,13 @@ const FormSmall = () => {
       <WrapperForm>
         <Title>Faça sua denúncia.</Title>
         <Description>Responda as perguntas abaixo</Description>
-        <form onSubmit={handleSubmit} ref={formRef} method="POST">
-          <LabelFields>3. O delito aconteceu:</LabelFields>
+        <form
+          onSubmit={handleSubmit}
+          ref={formRef}
+          method="POST"
+          action="/visualizar-dados"
+        >
+          <LabelFields>1. O delito aconteceu:</LabelFields>
           <RadioGroup required name="tipo_dnca">
             <StyledFormControlLabel
               type="radio"
@@ -157,15 +135,14 @@ const FormSmall = () => {
             />
           </RadioGroup>
 
-          <LabelFields>1. Selecione o transporte:</LabelFields>
-          <RadioGroup required name="typeTransport">
+          <LabelFields>2. Selecione o transporte:</LabelFields>
+          <RadioGroup required>
             <StyledFormControlLabel
               type="radio"
               value="Trem"
               label="Trem"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
-              name="typeTransport"
               onClick={() => handleCheck("train")}
             />
 
@@ -175,7 +152,6 @@ const FormSmall = () => {
               label="Metrô"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
-              name="typeTransport"
               onClick={() => handleCheck("metro")}
             />
             <StyledFormControlLabel
@@ -184,12 +160,11 @@ const FormSmall = () => {
               label="Ônibus"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
-              name="typeTransport"
               onClick={() => handleCheck("bus")}
             />
           </RadioGroup>
 
-          <LabelFields>2. Selecione a linha:</LabelFields>
+          <LabelFields>3. Selecione a linha:</LabelFields>
           <div>
             <StyledSelect
               required
@@ -198,26 +173,26 @@ const FormSmall = () => {
               id="id_lnha"
             >
               {selectTrain &&
-                dataSelectTrain.map(({ line }, index) => {
+                dataSelectTrain?.map(({ _id, nm_lnha, cd_lnha }, index) => {
                   return (
-                    <MenuItem value={line} key={`option-train${index}`}>
-                      {line}
+                    <MenuItem value={_id} key={`option-train${index}`}>
+                      {`${cd_lnha} | ${nm_lnha}`}
                     </MenuItem>
                   );
                 })}
               {selectMetro &&
-                dataSelectMetro.map(({ line }, index) => {
+                dataSelectMetro?.map(({ _id, nm_lnha, cd_lnha }, index) => {
                   return (
-                    <MenuItem value={line} key={`option-metro${index}`}>
-                      {line}
+                    <MenuItem value={_id} key={`option-metro${index}`}>
+                      {`${cd_lnha} | ${nm_lnha}`}
                     </MenuItem>
                   );
                 })}
               {selectBus &&
-                dataSelectBus.map(({ _id, nm_lnha, cd_lnha }, index) => {
+                dataSelectBus?.map(({ _id, nm_lnha, cd_lnha }, index) => {
                   return (
                     <MenuItem value={_id} key={`option-bus${index}`}>
-                      {`${cd_lnha} ${nm_lnha}`}
+                      {`${cd_lnha} | ${nm_lnha}`}
                     </MenuItem>
                   );
                 })}
@@ -228,32 +203,32 @@ const FormSmall = () => {
           <RadioGroup name="tipo_agrs">
             <StyledFormControlLabel
               type="radio"
-              value="Assédio"
-              label="Assédio"
+              value="Violência sexual"
+              label="Violência sexual"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
               name="tipo_agrs"
             />
             <StyledFormControlLabel
               type="radio"
-              value="Racismo"
-              label="Racismo"
+              value="Violência Física"
+              label="Violência Física"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
               name="tipo_agrs"
             />
             <StyledFormControlLabel
               type="radio"
-              value="Violência física"
-              label="Violência física"
+              value="Violência moral"
+              label="Violência moral"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
               name="tipo_agrs"
             />
             <StyledFormControlLabel
               type="radio"
-              value="Violência verbal"
-              label="Violência verbal"
+              value="Violência Social"
+              label="Violência Social"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
               name="tipo_agrs"
@@ -287,8 +262,8 @@ const FormSmall = () => {
           <RadioGroup name="ds_agrr[sexo]">
             <StyledFormControlLabel
               type="radio"
-              value="Menor de idade"
-              label="Menor de idade"
+              value="-18"
+              label="-18"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
               name="ds_agrr[faixa_etaria]"
@@ -303,24 +278,32 @@ const FormSmall = () => {
             />
             <StyledFormControlLabel
               type="radio"
-              value="26-40"
-              label="26-40"
+              value="26-35"
+              label="26-35"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
               name="ds_agrr[faixa_etaria]"
             />
             <StyledFormControlLabel
               type="radio"
-              value="40-60"
-              label="40-60"
+              value="36-45"
+              label="36-45"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
               name="ds_agrr[faixa_etaria]"
             />
             <StyledFormControlLabel
               type="radio"
-              value="Acima de 60"
-              label="Acima de 60"
+              value="46-60"
+              label="46-60"
+              control={<StyledRadio style={{ color: "#1565C0" }} />}
+              labelPlacement="start"
+              name="ds_agrr[faixa_etaria]"
+            />
+            <StyledFormControlLabel
+              type="radio"
+              value="60+"
+              label="60+"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
               name="ds_agrr[faixa_etaria]"
