@@ -12,6 +12,8 @@ import {
   TitleCard,
   DescriptionCard,
 } from "./dataView.style.js";
+import { LatestReports } from "../LatestReports";
+
 const DataView = () => {
   const DOMAIN_ENDPOINT = "https://sem-psiu.herokuapp.com/";
   const ENDPOINT_DENUNCIATIONS =
@@ -56,10 +58,10 @@ const DataView = () => {
             {dataDenunciations?.map(
               (
                 {
-                  qtd_assedio,
-                  qtd_racismo,
+                  qtd_violencia_sexual,
+                  qtd_violencia_social,
                   qtd_violencia_fisica,
-                  qtd_violencia_verbal,
+                  qtd_violencia_moral,
                   transporte,
                 },
                 index
@@ -71,20 +73,20 @@ const DataView = () => {
                       <DescriptionCard>{transporte}</DescriptionCard>
                     </ContentCard>
                     <ContentCard>
-                      <TitleCard>Assédio</TitleCard>
-                      <DescriptionCard>{qtd_assedio}</DescriptionCard>
+                      <TitleCard>Violência Sexual</TitleCard>
+                      <DescriptionCard>{qtd_violencia_sexual}</DescriptionCard>
                     </ContentCard>
                     <ContentCard>
-                      <TitleCard>Violência física</TitleCard>
+                      <TitleCard>Violência Física</TitleCard>
                       <DescriptionCard>{qtd_violencia_fisica}</DescriptionCard>
                     </ContentCard>
                     <ContentCard>
-                      <TitleCard>Violência verbal</TitleCard>
-                      <DescriptionCard>{qtd_violencia_verbal}</DescriptionCard>
+                      <TitleCard>Violência Moral</TitleCard>
+                      <DescriptionCard>{qtd_violencia_moral}</DescriptionCard>
                     </ContentCard>
                     <ContentCard>
-                      <TitleCard>Racismo</TitleCard>
-                      <DescriptionCard>{qtd_racismo}</DescriptionCard>
+                      <TitleCard>Violência Social</TitleCard>
+                      <DescriptionCard>{qtd_violencia_social}</DescriptionCard>
                     </ContentCard>
                   </Card>
                 );
@@ -92,6 +94,7 @@ const DataView = () => {
             )}
           </BlockCard>
         </WrapperFlex>
+        <LatestReports />
       </WrapperDataView>
     </>
   );

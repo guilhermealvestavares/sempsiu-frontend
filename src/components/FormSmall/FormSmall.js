@@ -1,8 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import {
-  LabelRadio,
   LabelFields,
-  LabelFieldsWithSomesRadios,
   WrapperForm,
   Title,
   Description,
@@ -15,6 +13,7 @@ import {
 import axios from "axios";
 import { RadioGroup, MenuItem, Button } from "@material-ui/core";
 import styled from "styled-components";
+import { LatestReports } from "../LatestReports";
 
 const DOMAIN_ENDPOINT = "https://sem-psiu.herokuapp.com/";
 const ENDPOINT_DENUNCIATION = DOMAIN_ENDPOINT + "denuncia";
@@ -36,7 +35,6 @@ const FormSmall = () => {
   }, []);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     axiosPostDenunciation(setupDataPost());
   };
 
@@ -203,8 +201,8 @@ const FormSmall = () => {
           <RadioGroup name="tipo_agrs">
             <StyledFormControlLabel
               type="radio"
-              value="Violência sexual"
-              label="Violência sexual"
+              value="Violência Sexual"
+              label="Violência Sexual"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
               name="tipo_agrs"
@@ -219,8 +217,8 @@ const FormSmall = () => {
             />
             <StyledFormControlLabel
               type="radio"
-              value="Violência moral"
-              label="Violência moral"
+              value="Violência Moral"
+              label="Violência Moral"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
               name="tipo_agrs"
