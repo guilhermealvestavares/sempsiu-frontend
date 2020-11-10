@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Bar } from "react-chartjs-2";
+import { Bar, Pie } from "react-chartjs-2";
 import { Title, Description } from "./charts.style.js";
 import axios from "axios";
 
@@ -74,7 +74,7 @@ const VerticalBarMetro = () => {
       <div>
         <Description>Informações sobre Metrô</Description>
       </div>
-      <Bar data={data} options={options} />
+      <Pie data={data} options={options} />
     </>
   );
 };
