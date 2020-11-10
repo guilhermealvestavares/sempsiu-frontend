@@ -11,9 +11,7 @@ import {
   StyledButton,
 } from "./formSmall.style.js";
 import axios from "axios";
-import { RadioGroup, MenuItem, Button } from "@material-ui/core";
-import styled from "styled-components";
-import { LatestReports } from "../LatestReports";
+import { RadioGroup, MenuItem } from "@material-ui/core";
 
 const DOMAIN_ENDPOINT = "https://sem-psiu.herokuapp.com/";
 const ENDPOINT_DENUNCIATION = DOMAIN_ENDPOINT + "denuncia";
@@ -35,7 +33,6 @@ const FormSmall = () => {
   }, []);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     axiosPostDenunciation(setupDataPost());
   };
 
@@ -125,8 +122,8 @@ const FormSmall = () => {
             />
             <StyledFormControlLabel
               type="radio"
-              value="Já aconteceu"
-              label="Já aconteceu"
+              value="Relato"
+              label="Relato"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
               name="tipo_dnca"
@@ -322,14 +319,6 @@ const FormSmall = () => {
               type="radio"
               value="Branco"
               label="Branco"
-              control={<StyledRadio style={{ color: "#1565C0" }} />}
-              labelPlacement="start"
-              name="ds_agrr[etnia]"
-            />
-            <StyledFormControlLabel
-              type="radio"
-              value="Pardo"
-              label="Pardo"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
               name="ds_agrr[etnia]"
