@@ -206,8 +206,8 @@ const FormSmall = () => {
             />
             <StyledFormControlLabel
               type="radio"
-              value="Violência Física"
-              label="Violência Física"
+              value="Violência Fisica"
+              label="Violência Fisica"
               control={<StyledRadio style={{ color: "#1565C0" }} />}
               labelPlacement="start"
               name="tipo_agrs"
