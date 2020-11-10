@@ -13,6 +13,7 @@ import {
   DescriptionCard,
 } from "./dataView.style.js";
 import { LatestReports } from "../LatestReports";
+import { VerticalBarBus, VerticalBarMetro, VerticalBarTrain } from "../Charts";
 
 const DataView = () => {
   const DOMAIN_ENDPOINT = "https://sem-psiu.herokuapp.com/";
@@ -27,16 +28,11 @@ const DataView = () => {
 
     const arrayData = Object.entries(responseAxios.data.data);
 
-    console.log("arrayData: ", arrayData);
-
     const arrayDataFormated = arrayData.map((item) => {
       return item[1];
     });
 
-    console.log("arrayDataFormated: ", arrayDataFormated);
-
     setDataDenunciations(arrayDataFormated);
-    console.log(dataDenunciations);
   };
 
   useEffect(() => {
@@ -95,6 +91,9 @@ const DataView = () => {
           </BlockCard>
         </WrapperFlex>
         <LatestReports />
+        <VerticalBarBus />
+        <VerticalBarMetro />
+        <VerticalBarTrain />
       </WrapperDataView>
     </>
   );

@@ -23,7 +23,6 @@ const LatestReports = () => {
   const axiosGetDenunciations = () => {
     axios.get(ENDPOINT_DENUNCIATION).then(function(response) {
       setDenunciations(response.data.data.reverse());
-      console.log(response.data.data);
     });
   };
 
@@ -33,17 +32,17 @@ const LatestReports = () => {
       <Description>Veja quais foram as últimas denúncias</Description>
 
       <WrapperFlex>
-        {denunciations?.map(({ tipo_agrs, id_lnha }, index) => {
+        {denunciations?.map(({ tipo_agrs, nm_lnha }, index) => {
           if (index <= 3) {
             return (
-              <Card>
+              <Card key={`option-card${index}`}>
                 <ContentCard>
                   <TitleCard>Tipo do delito</TitleCard>
                   <DescriptionCard>{tipo_agrs}</DescriptionCard>
                 </ContentCard>
                 <ContentCard>
                   <TitleCard>Linha</TitleCard>
-                  <DescriptionCard>{id_lnha}</DescriptionCard>
+                  <DescriptionCard>{nm_lnha}</DescriptionCard>
                 </ContentCard>
               </Card>
             );

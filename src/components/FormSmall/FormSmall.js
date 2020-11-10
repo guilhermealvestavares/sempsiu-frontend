@@ -76,11 +76,8 @@ const FormSmall = () => {
   const axiosGetLines = () => {
     axios.get(ENDPOINT_LINES).then(function(response) {
       setDataSelectBus(response.data.data.onibus);
-      console.log(response.data.data.onibus);
       setDataSelectMetro(response.data.data.metro);
-      console.log(response.data.data.metro);
       setDataSelectTrain(response.data.data.trem);
-      console.log(response.data.data.trem);
     });
   };
 

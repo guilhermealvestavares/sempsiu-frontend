@@ -11,7 +11,7 @@ const WrapperFlex = styled.div`
   }
 `;
 
-const Title = styled.h1`
+const Title = styled.h2`
   font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: bold;
