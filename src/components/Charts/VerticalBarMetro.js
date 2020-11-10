@@ -33,7 +33,6 @@ const VerticalBarMetro = () => {
     ],
     datasets: [
       {
-        label: "# of Votes",
         data: [
           dataMetro.qtd_violencia_sexual,
           dataMetro.qtd_violencia_fisica,
