@@ -35,6 +35,7 @@ const FormSmall = () => {
   }, []);
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     axiosPostDenunciation(setupDataPost());
   };
 
@@ -42,10 +43,12 @@ const FormSmall = () => {
     axios
       .post(ENDPOINT_DENUNCIATION, data)
       .then(function(response) {
-        console.log("then: " + response);
+        console.log("Enviado com sucesso " + response);
       })
       .catch(function(error) {
-        console.log("catch: " + error);
+        alert(
+          "Serviço indisponível, tente novamente mais tarde. Erro: " + error
+        );
       });
   };
 
