@@ -72,7 +72,7 @@ const HowToAct = () => {
         <DenounceHere>Faça uma denúncia anônima aqui:</DenounceHere>
         <img
           style={{ margin: "0 auto", display: "block" }}
-          src="http://www.ssp.sp.gov.br/img/banner_denuncia.png"
+          src="https://www.ssp.sp.gov.br/img/banner_denuncia.png"
         ></img>
 
         <p style={{ fontSize: "12px", marginTop: "24px" }}>
