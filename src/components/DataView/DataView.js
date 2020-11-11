@@ -42,7 +42,7 @@ const DataView = () => {
   return (
     <>
       <WrapperDataView>
-        <WrapperFlex>
+        <WrapperFlex reverse>
           <BlockText>
             <Title>Informações sobre as linhas</Title>
             <Description>

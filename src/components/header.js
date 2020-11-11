@@ -7,7 +7,9 @@ import { Container } from "./layoutComponents";
 const Header = ({ siteTitle, className }) => (
   <header className={className}>
     <Container>
-      <h1></h1>
+      <Link to="/">
+        <h1>Sem Psiu</h1>
+      </Link>
     </Container>
   </header>
 );
