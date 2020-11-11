@@ -23,7 +23,7 @@ Header.defaultProps = {
 };
 
 const StyledHeader = styled(Header)`
-  color: var(--white);
+  color: #ffffff;
   background: var(--primary-color);
   padding: 1rem 0;
   margin-bottom: 1rem;
