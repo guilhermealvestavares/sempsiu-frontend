@@ -10,7 +10,7 @@ const ViewData = () => {
     <Layout>
       <Container>
         <SEO
-          title="Home"
+          title="Visualizar dados"
           keywords={[`denúncia`, `assédio`, `Transporte Público`]}
         />
         <DataView />
